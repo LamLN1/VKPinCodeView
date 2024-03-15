@@ -29,6 +29,8 @@ public final class BorderStyle: EntryViewStyle {
     private var _backgroundColor: UIColor
 
     private var _selectedBackgroundColor: UIColor
+    
+    private var _selectedTextColor: UIColor
 
 
     public required init(
@@ -41,7 +43,8 @@ public final class BorderStyle: EntryViewStyle {
         selectedBorderColor: UIColor = .lightGray,
         errorBorderColor: UIColor = .red,
         backgroundColor: UIColor = .white,
-        selectedBackgroundColor: UIColor = .white) {
+        selectedBackgroundColor: UIColor = .white,
+        selectedTextColor: UIColor = .black) {
 
         _font = font
         _textColor = textColor
@@ -53,6 +56,7 @@ public final class BorderStyle: EntryViewStyle {
         _errorBorderColor = errorBorderColor
         _backgroundColor = backgroundColor
         _selectedBackgroundColor = selectedBackgroundColor
+        _selectedTextColor = selectedTextColor
     }
 
     public func onSetStyle(_ label: VKLabel) {
@@ -76,7 +80,8 @@ public final class BorderStyle: EntryViewStyle {
 
             layer.borderColor = _selectedBorderColor.cgColor
             layer.backgroundColor = _selectedBackgroundColor.cgColor
-
+            label.textColor = _selectedTextColor
+            
             if label.animateWhileSelected {
 
                 let colors = [_borderColor.cgColor,
@@ -93,6 +98,7 @@ public final class BorderStyle: EntryViewStyle {
             layer.removeAllAnimations()
             layer.borderColor = _borderColor.cgColor
             layer.backgroundColor = _backgroundColor.cgColor
+            label.textColor = _textColor
         }
     }
 
