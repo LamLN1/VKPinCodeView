@@ -235,8 +235,8 @@ public final class VKPinCodeView: UIView {
         let index = text.count - 1
         let activeLabel = _stack.arrangedSubviews[index] as! UILabel
         let charIndex = text.index(text.startIndex, offsetBy: index)
-        activeLabel.text = String(text[charIndex])
-        _code += activeLabel.text!
+        activeLabel.text = "*"
+        _code += String(text[charIndex])
     }
     
     private func highlightActiveLabel(_ activeIndex: Int) {
