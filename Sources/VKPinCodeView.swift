@@ -80,6 +80,9 @@ public final class VKPinCodeView: UIView {
     /// Enable or disable shake animation on error. Default value is true.
     public var shakeOnError = true
     
+    /// Enable input password.
+    public var isInputPassword: Bool = false
+    
     /// Setup a preferred error reset type. Default value is none.
     public var resetAfterError = ResetType.none
     
@@ -235,7 +238,7 @@ public final class VKPinCodeView: UIView {
         let index = text.count - 1
         let activeLabel = _stack.arrangedSubviews[index] as! UILabel
         let charIndex = text.index(text.startIndex, offsetBy: index)
-        activeLabel.text = "*"
+        activeLabel.text = isInputPassword ? "*" : String(text[charIndex])
         _code += String(text[charIndex])
     }
     
